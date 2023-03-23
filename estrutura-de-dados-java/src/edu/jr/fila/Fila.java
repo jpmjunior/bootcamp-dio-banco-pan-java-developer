@@ -11,37 +11,47 @@ package edu.jr.fila;
 
 import edu.jr.util.No;
 
-public class Fila {
-    private No<?> refFinalDaFila = null;
+public class Fila<T> {
+    private No<T> refFinalDaFila = null;
+    
+    /**
+     * Construtor vazio
+     */
+    public Fila() {}
     
     /**
      * Construtor
-     * @param refFinalDaFila - referência para o nó final da fila
+     * @param primeiroObjetoDaFila - inicializa a fila com o objeto passado por parâmetro
      */
-    public Fila(No<?> refFinalDaFila) {
-        this.refFinalDaFila = refFinalDaFila;
+    public Fila(T primeiroObjetoDaFila) {
+        this.refFinalDaFila = new No<T>(primeiroObjetoDaFila);
     }
 
     /**
-     * Este método adiciona um novo nó no final da fila
-     * @param novoNo
+     * Este método adiciona um novo elemento no final da fila
+     * @param novoObjeto
      */
-    public void enqueue (No<?> novoNo) {
-        if (refFinalDaFila != null) {
-            No<?> noAuxiliar = refFinalDaFila;
-            refFinalDaFila = novoNo;
+    public void enqueue (T novoObjeto) {
+        No<T> novoNo = new No<>(novoObjeto);
+        if (!isEmpty()) {
+            No<T> noAuxiliar = refFinalDaFila;
+            refFinalDaFila = new No<T>(novoObjeto);
             refFinalDaFila.setProximoNo(noAuxiliar);
         } else {
             refFinalDaFila = novoNo;
         }
     }
 
-    public No<?> dequeue() {
-        if (refFinalDaFila != null) {
+    /**
+     * Este método remove e retorna o primeiro elemento da fila
+     * @return noDequeued
+     */
+    public T dequeue() {
+        if (!isEmpty()) {
             
             if (refFinalDaFila.getProximoNo() != null) {
                 
-                No<?> noAuxiliar = refFinalDaFila;
+                No<T> noAuxiliar = refFinalDaFila;
 
                 if (noAuxiliar.getProximoNo().getProximoNo() != null) {
                     
@@ -51,15 +61,15 @@ public class Fila {
                     
                 }
                 
-                No<?> noDequeued = noAuxiliar.getProximoNo();
+                No<T> noDequeued = noAuxiliar.getProximoNo();
                 noAuxiliar.setProximoNo(null);
-                return noDequeued;
+                return noDequeued.getConteudo();
                 
             }
             
-            No<?> noDequeued = refFinalDaFila;
+            No<T> noDequeued = refFinalDaFila;
             refFinalDaFila = null;
-            return noDequeued;
+            return noDequeued.getConteudo();
             
         }
 
@@ -67,6 +77,10 @@ public class Fila {
 
     }
 
+    /**
+     * Este método verifica se a fila está vazia
+     * @return <b>true</b> ou <b>false</b>
+     */
     public boolean isEmpty() {
         return refFinalDaFila == null ? true : false;
     }

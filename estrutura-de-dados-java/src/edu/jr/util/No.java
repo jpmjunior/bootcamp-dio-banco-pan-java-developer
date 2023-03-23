@@ -12,7 +12,7 @@ package edu.jr.util;
 
 public class No<T> {
     private T conteudo;
-    private No<?> proximoNo;
+    private No<T> proximoNo;
 
     /**
      * Construtor
@@ -43,7 +43,7 @@ public class No<T> {
      * Este método retorna o próximo nó encadeado
      * @return proximoNo
      */
-    public No<?> getProximoNo() {
+    public No<T> getProximoNo() {
         return proximoNo;
     }
     
@@ -51,7 +51,7 @@ public class No<T> {
      * Este método atribui um novo nó para o atributo <b>proximoNo</b>
      * @param proximoNo
      */
-    public void setProximoNo (No<?> proximoNo) {
+    public void setProximoNo (No<T> proximoNo) {
         this.proximoNo = proximoNo;
     }
 

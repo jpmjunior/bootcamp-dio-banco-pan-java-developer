@@ -11,45 +11,45 @@ package edu.jr.pilha;
 
 import edu.jr.util.No;
 
-public class Pilha {
-    private No<?> refTopoPilha = null;
+public class Pilha<T> {
+    private No<T> refTopoPilha = null;
 
     /**
      * Construtor
-     * @param refTopoPilha - referência para o nó do topo da pilha
+     * @param objetoTopodaPilha - inicializa pilha com objeto passado por parâmetro
      */
-    public Pilha(No<?> refTopoPilha) {
-        this.refTopoPilha = refTopoPilha;
+    public Pilha(T objetoTopodaPilha) {
+        this.refTopoPilha = new No<T>(objetoTopodaPilha);
     }
 
     /**
-     * Este método retorna o nó do topo da pilha
-     * @return refTopoPilha
+     * Este método retorna o elemento do topo da pilha sem removê-lo
+     * @return elemento do topo da pilha
      */
-    public No<?> top () {
-        return refTopoPilha;
+    public T top () {
+        return refTopoPilha.getConteudo();
     }
 
     /**
-     * Este método insere um novo nó na pilha
-     * @param novoNo
+     * Este método insere um novo elemento na pilha
+     * @param novoObjeto
      */
-    public void push (No<?> novoNo) {
-        No<?> refNoAuxiliar = refTopoPilha;
-        refTopoPilha = novoNo;
-        novoNo.setProximoNo(refNoAuxiliar);
+    public void push (T novoObjeto) {
+        No<T> noAuxiliar = refTopoPilha;
+        refTopoPilha = new No<T>(novoObjeto);
+        refTopoPilha.setProximoNo(noAuxiliar);
     }
 
     /**
-     * Este método remove e retorna o nó do topo da pilha
-     * @return NoPoped - nó removido do topo da pilha
+     * Este método remove e retorna o elemento do topo da pilha
+     * @return NoPoped
      */
-    public No<?> pop () {
+    public T pop () {
         if (!isEmpty()) {
-            No<?> NoPoped = refTopoPilha;
+            No<T> NoPoped = refTopoPilha;
             refTopoPilha = refTopoPilha.getProximoNo();
             NoPoped.setProximoNo(null);
-            return NoPoped;
+            return NoPoped.getConteudo();
         }
         return null;
     }
