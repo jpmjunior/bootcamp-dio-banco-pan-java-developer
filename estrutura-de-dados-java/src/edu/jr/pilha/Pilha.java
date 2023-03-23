@@ -1,6 +1,6 @@
 /**
  * <h1>Classe Pilha</h1>
- * A classe Pilha representa uma estrutura de dados do tipo LIFO (Last In Last Out)
+ * A classe Pilha representa uma estrutura de dados do tipo LIFO (Last In First Out)
  * 
  * @author Pinheiro Jr.
  * @version 1.0
