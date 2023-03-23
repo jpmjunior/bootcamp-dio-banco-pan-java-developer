@@ -9,14 +9,17 @@ public class MainFila {
         fila.enqueue("4");
         
         System.out.println(fila);
+        System.out.println("Primeiro elemento: " + fila.first());
         
         fila.dequeue();
         System.out.println(fila);
+        System.out.println("Primeiro elemento: " + fila.first());
         
         fila.dequeue();
         fila.dequeue();
         fila.dequeue();
         System.out.println(fila);
+        System.out.println("Primeiro elemento: " + fila.first());
         
         fila.enqueue("1");
         fila.enqueue("2");
@@ -24,16 +27,18 @@ public class MainFila {
         fila.enqueue("4");
         fila.enqueue("5");
         System.out.println(fila);
-
+        System.out.println("Primeiro elemento: " + fila.first());
+        
         System.out.println("--------------------");
-
+        
         Fila<Integer> filaInt = new Fila<>();
         filaInt.enqueue(10);
         filaInt.enqueue(20);
         filaInt.enqueue(30);
         filaInt.enqueue(40);
-
+        
         System.out.println(filaInt);
+        System.out.println("Primeiro elemento: " + filaInt.first());
 
     }
 }

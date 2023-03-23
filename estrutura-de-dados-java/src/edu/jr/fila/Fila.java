@@ -78,6 +78,30 @@ public class Fila<T> {
     }
 
     /**
+     * Este método retorna o primeiro elemento da fila sem removê-lo
+     * @return
+     */
+    public T first() {
+        if (!isEmpty()) {
+            
+            No<T> noAuxiliar = refFinalDaFila;
+            
+            while (noAuxiliar.getProximoNo() != null) {
+                
+                noAuxiliar = noAuxiliar.getProximoNo();
+            
+            }
+
+            return noAuxiliar.getConteudo();
+        
+        } else {
+            
+            return null;
+        
+        }
+    }
+
+    /**
      * Este método verifica se a fila está vazia
      * @return <b>true</b> ou <b>false</b>
      */
