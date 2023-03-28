@@ -115,7 +115,7 @@ public class Fila<T> {
         if (refFinalDaFila != null) {
             String str = "Fila: ";
             
-            No<?> noAuxiliar = refFinalDaFila;
+            No<T> noAuxiliar = refFinalDaFila;
             
             while (noAuxiliar != null) {
                 str += noAuxiliar + " -> ";
