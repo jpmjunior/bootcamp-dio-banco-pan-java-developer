@@ -1,3 +1,13 @@
+/**
+ * <h1>Classe ListaEncadeada</h1>
+ * A classe ListaEncadeada representa uma estrutura de dados do tipo lista, onde inserções podem ocorrer
+ * em qualquer posição ou índice.
+ * 
+ * @author Pinheiro Jr.
+ * @version 1.0
+ * @since 28/03/2023
+ */
+
 package edu.jr.listaEncadeada;
 
 import edu.jr.util.No;
@@ -6,10 +16,23 @@ public class ListaEncadeada<T> {
     private No<T> refInicioDaLista = null;
     private int tamanhoDaLista = 0;
 
+    /**
+     * Este método adiciona um elemento no final da lista e retorna <b>true</b> em caso de sucesso ou 
+     * <b>false</b> em caso de falha
+     * @param elemento
+     * @return <b>true</b> ou <b>false</b>
+     */
     public boolean add(T elemento) {
         return add(tamanhoDaLista, elemento);
     }
     
+    /**
+     * Este método adiciona um elemento na lista conforme índice recebido por parâmetro e retorna 
+     * <b>true</b> em caso de sucesso ou <b>false</b> em caso de falha
+     * @param indice
+     * @param elemento
+     * @return <b>true</b> ou <b>false</b>
+     */
     public boolean add(int indice, T elemento) {
         
         if (indice < 0 || indice > tamanhoDaLista) return false;
@@ -21,6 +44,11 @@ public class ListaEncadeada<T> {
         return true;
     }
     
+    /**
+     * Método privado que insere um elemento no meio da lista
+     * @param indice
+     * @param elemento
+     */
     private void addNoMeio(int indice, T elemento) {
         
         No<T> noAnterior = null;
@@ -42,6 +70,10 @@ public class ListaEncadeada<T> {
 
     }
     
+    /**
+     * Método privado que insere um elemento no final da lista
+     * @param elemento
+     */
     private void addNoFinal(T elemento) {
         
         if (isEmpty()) refInicioDaLista = new No<T>(elemento);
@@ -58,9 +90,15 @@ public class ListaEncadeada<T> {
 
     }
 
-    public boolean remove(int indice) {
+    /**
+     * Este método um elemento da lista conforme índice informado e retorna o elemento removido em caso de sucesso 
+     * ou null em caso de falha
+     * @param indice
+     * @return
+     */
+    public T remove(int indice) {
         
-        if (indice < 0 || indice > tamanhoDaLista - 1) return false;
+        if (indice < 0 || indice > tamanhoDaLista - 1) return null;
 
         No<T> noAnterior = null;
         No<T> noAtual = refInicioDaLista;
@@ -77,16 +115,18 @@ public class ListaEncadeada<T> {
         }
         
         tamanhoDaLista--;
-        return true;
+        return noAtual.getConteudo();
     
     }
     
+    /**
+     * Este método retorna um elemento da lista sem removê-lo, conforme índice informado
+     * @param indice
+     * @return
+     */
     public T get(int indice) {
         
-        if (indice < 0 || indice > tamanhoDaLista - 1) {
-            System.out.println("Índice inválido.");
-            return null;
-        }
+        if (indice < 0 || indice > tamanhoDaLista - 1) return null;
 
         No<T> noAuxiliar = refInicioDaLista;
 
@@ -98,6 +138,10 @@ public class ListaEncadeada<T> {
     
     }
     
+    /**
+     * Este método verifica se a lista está vazia
+     * @return <b>true</b> ou <b>false</b>
+     */
     public boolean isEmpty() {
         return refInicioDaLista == null ? true : false;
     }
