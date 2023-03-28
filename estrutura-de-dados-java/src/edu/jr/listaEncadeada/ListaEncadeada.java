@@ -139,6 +139,14 @@ public class ListaEncadeada<T> {
     }
     
     /**
+     * Retorna quantidade de elementos da lista
+     * @return
+     */
+    public int size() {
+        return tamanhoDaLista;
+    }
+
+    /**
      * Este método verifica se a lista está vazia
      * @return <b>true</b> ou <b>false</b>
      */

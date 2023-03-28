@@ -34,5 +34,7 @@ public class MainListaEncadeada {
         indiceRecuperado = -1;
         System.out.println("Recuperando elemento de índice " + indiceRecuperado + ": " + lista.get(indiceRecuperado));
 
+        System.out.println("Tamanho da lista: " + lista.size());
+
     }
 }
