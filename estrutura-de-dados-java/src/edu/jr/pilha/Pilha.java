@@ -37,7 +37,7 @@ public class Pilha<T> {
     public void push (T novoObjeto) {
         No<T> noAuxiliar = refTopoPilha;
         refTopoPilha = new No<T>(novoObjeto);
-        refTopoPilha.setProximoNo(noAuxiliar);
+        refTopoPilha.setNoPosterior(noAuxiliar);
     }
 
     /**
@@ -47,8 +47,8 @@ public class Pilha<T> {
     public T pop () {
         if (!isEmpty()) {
             No<T> NoPoped = refTopoPilha;
-            refTopoPilha = refTopoPilha.getProximoNo();
-            NoPoped.setProximoNo(null);
+            refTopoPilha = refTopoPilha.getNoPosterior();
+            NoPoped.setNoPosterior(null);
             return NoPoped.getConteudo();
         }
         return null;
@@ -59,22 +59,20 @@ public class Pilha<T> {
      * @return <b>true</b> ou <b>false</b>
      */
     public boolean isEmpty () {
-        if (refTopoPilha == null) return true;
-        return false;
+        return refTopoPilha == null ? true : false;
     }
 
     @Override
     public String toString() {
         String str = "PILHA: \n";
-        No<?> refNoAuxiliar = refTopoPilha;
+        No<T> refNoAuxiliar = refTopoPilha;
         
         while (refNoAuxiliar != null) {
             str += refNoAuxiliar + " ->\n";
-            refNoAuxiliar = refNoAuxiliar.getProximoNo();
+            refNoAuxiliar = refNoAuxiliar.getNoPosterior();
         }
-        str += "null";
         
-        return str;
+        return str + "null";
     }
 
     

@@ -36,7 +36,7 @@ public class Fila<T> {
         if (!isEmpty()) {
             No<T> noAuxiliar = refFinalDaFila;
             refFinalDaFila = new No<T>(novoObjeto);
-            refFinalDaFila.setProximoNo(noAuxiliar);
+            refFinalDaFila.setNoPosterior(noAuxiliar);
         } else {
             refFinalDaFila = novoNo;
         }
@@ -49,20 +49,20 @@ public class Fila<T> {
     public T dequeue() {
         if (!isEmpty()) {
             
-            if (refFinalDaFila.getProximoNo() != null) {
+            if (refFinalDaFila.getNoPosterior() != null) {
                 
                 No<T> noAuxiliar = refFinalDaFila;
 
-                if (noAuxiliar.getProximoNo().getProximoNo() != null) {
+                if (noAuxiliar.getNoPosterior().getNoPosterior() != null) {
                     
-                    while (noAuxiliar.getProximoNo().getProximoNo() != null) {
-                        noAuxiliar = noAuxiliar.getProximoNo();
+                    while (noAuxiliar.getNoPosterior().getNoPosterior() != null) {
+                        noAuxiliar = noAuxiliar.getNoPosterior();
                     }
                     
                 }
                 
-                No<T> noDequeued = noAuxiliar.getProximoNo();
-                noAuxiliar.setProximoNo(null);
+                No<T> noDequeued = noAuxiliar.getNoPosterior();
+                noAuxiliar.setNoPosterior(null);
                 return noDequeued.getConteudo();
                 
             }
@@ -86,9 +86,9 @@ public class Fila<T> {
             
             No<T> noAuxiliar = refFinalDaFila;
             
-            while (noAuxiliar.getProximoNo() != null) {
+            while (noAuxiliar.getNoPosterior() != null) {
                 
-                noAuxiliar = noAuxiliar.getProximoNo();
+                noAuxiliar = noAuxiliar.getNoPosterior();
             
             }
 
@@ -112,21 +112,21 @@ public class Fila<T> {
     @Override
     public String toString() {
         
+        String str = "Fila: ";
+
         if (refFinalDaFila != null) {
-            String str = "Fila: ";
             
             No<T> noAuxiliar = refFinalDaFila;
             
             while (noAuxiliar != null) {
                 str += noAuxiliar + " -> ";
-                noAuxiliar = noAuxiliar.getProximoNo();
+                noAuxiliar = noAuxiliar.getNoPosterior();
             }
 
-            str += "null";
-            return str;
+            return str + "null";
 
         } else {
-            return "null";
+            return str + "null";
         }
     }
 

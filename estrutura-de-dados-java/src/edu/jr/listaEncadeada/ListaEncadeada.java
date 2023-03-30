@@ -56,16 +56,16 @@ public class ListaEncadeada<T> {
         
         for (int i = 0; i < indice; i++) {
             noAnterior = noAtual;
-            noAtual = noAtual.getProximoNo();
+            noAtual = noAtual.getNoPosterior();
         }
         
         No<T> novoNo = new No<>(elemento);
         if (noAnterior != null) {
-            noAnterior.setProximoNo(novoNo);
-            novoNo.setProximoNo(noAtual);
+            noAnterior.setNoPosterior(novoNo);
+            novoNo.setNoPosterior(noAtual);
         } else {
             refInicioDaLista = novoNo;
-            refInicioDaLista.setProximoNo(noAtual);
+            refInicioDaLista.setNoPosterior(noAtual);
         }
 
     }
@@ -82,10 +82,10 @@ public class ListaEncadeada<T> {
             No<T> noAuxiliar = refInicioDaLista;
             
             for (int i = 0; i < tamanhoDaLista - 1; i++) {
-                noAuxiliar = noAuxiliar.getProximoNo();
+                noAuxiliar = noAuxiliar.getNoPosterior();
             }
             
-            noAuxiliar.setProximoNo(new No<T>(elemento));
+            noAuxiliar.setNoPosterior(new No<T>(elemento));
         }
 
     }
@@ -105,13 +105,13 @@ public class ListaEncadeada<T> {
         
         for (int i = 0; i < indice; i++) {
             noAnterior = noAtual;
-            noAtual = noAtual.getProximoNo();
+            noAtual = noAtual.getNoPosterior();
         }
 
         if (noAnterior != null) {
-            noAnterior.setProximoNo(noAtual.getProximoNo());
+            noAnterior.setNoPosterior(noAtual.getNoPosterior());
         } else {
-            refInicioDaLista = refInicioDaLista.getProximoNo();
+            refInicioDaLista = refInicioDaLista.getNoPosterior();
         }
         
         tamanhoDaLista--;
@@ -131,7 +131,7 @@ public class ListaEncadeada<T> {
         No<T> noAuxiliar = refInicioDaLista;
 
         for (int i = 0; i < indice; i++) {
-            noAuxiliar = noAuxiliar.getProximoNo();
+            noAuxiliar = noAuxiliar.getNoPosterior();
         }
 
         return noAuxiliar.getConteudo();
@@ -164,7 +164,7 @@ public class ListaEncadeada<T> {
             
             while (noAuxiliar != null) {
                 str += noAuxiliar + " -> ";
-                noAuxiliar = noAuxiliar.getProximoNo();
+                noAuxiliar = noAuxiliar.getNoPosterior();
             }
 
             str += "null";

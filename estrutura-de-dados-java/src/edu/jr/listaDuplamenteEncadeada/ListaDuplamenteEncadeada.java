@@ -50,7 +50,7 @@ public class ListaDuplamenteEncadeada<T> {
         
         NoDuplo<T> novoNo = new NoDuplo<>(elemento);
         NoDuplo<T> noAnterior = noAtual.getNoAnterior();
-
+        
         if (noAnterior != null) {
             noAnterior.setNoPosterior(novoNo);
             novoNo.setNoAnterior(noAnterior);
@@ -70,14 +70,15 @@ public class ListaDuplamenteEncadeada<T> {
      */
     private void addNoFinal(T elemento) {
         
+        NoDuplo<T> novoNo = new NoDuplo<>(elemento);
+        
         if (!isEmpty()) {
-            NoDuplo<T> novoNo = new NoDuplo<>(elemento);
             refFinalDaLista.setNoPosterior(novoNo);
             novoNo.setNoAnterior(refFinalDaLista);
             refFinalDaLista = novoNo;
         } else {
-            refInicioDaLista = new NoDuplo<T>(elemento);
-            refFinalDaLista = refInicioDaLista;
+            refInicioDaLista = novoNo;
+            refFinalDaLista = novoNo;
         }
 
     }

@@ -11,13 +11,13 @@ public class MainFila {
         System.out.println(fila);
         System.out.println("Primeiro elemento: " + fila.first());
         
-        fila.dequeue();
+        System.out.println("Elemento retirado da fila: " + fila.dequeue());
         System.out.println(fila);
         System.out.println("Primeiro elemento: " + fila.first());
         
-        fila.dequeue();
-        fila.dequeue();
-        fila.dequeue();
+        System.out.println("Elemento retirado da fila: " + fila.dequeue());
+        System.out.println("Elemento retirado da fila: " + fila.dequeue());
+        System.out.println("Elemento retirado da fila: " + fila.dequeue());
         System.out.println(fila);
         System.out.println("Primeiro elemento: " + fila.first());
         

@@ -15,9 +15,9 @@ public class MainListaEncadeada {
         lista.add(2, 22);
         System.out.println(lista);
         
-        lista.remove(5);
-        lista.remove(3);
-        lista.remove(0);
+        System.out.println("Removendo elemento: " + lista.remove(5));
+        System.out.println("Removendo elemento: " + lista.remove(3));
+        System.out.println("Removendo elemento: " + lista.remove(0));
         System.out.println(lista);
         
         lista.add(0, 0);
